@@ -1,0 +1,129 @@
+Assignment
+
+slide 41
+
+1.mkdir test (in home dir)
+2.cat > employeelist
+  cat > skillset
+3.mkdir test2 (Home dir)
+  -hard link       - ln skillset hardlink
+  -symbolic link   - ln -s skillset slink
+ 
+Differences between symbolic and hard link
+     symbolic link                                  hardlink
+  1)It is used as known as a softlink            1)hard link is a mirror copy of the original file.
+    its an actual link to the original file.
+  2)If you delete the original file,the          2)If you delete the original file,hardlink will not be affected.
+    symbolic file has no value
+4.sudo chgrp user2 f01
+5.chmod 744 f01
+6.chmod o+w f01
+7.chmod o-r f01
+8.chrgp user3 employeelist
+9.chown user5 employeelist
+10.who | wc -l
+-----------------------------------------------------------------------------------
+slide 47
+
+1.cat >f01
+  line
+2.cat >>f01
+  line1
+  line2
+3.cat >f02
+  hi
+  i am a boy
+  i play cricket
+4.cat f01
+  cat f02
+5.cat f01 f02
+6.cat f01 f02>f03
+7.cat f01 f02 f03 f04 f05
+8.no errors in above command
+9.cat f01 f02 f03 f04 f05>f10 no error
+10.cp f01 f06>errorlog
+
+------------------------------------------------------------------------------------
+slide 55
+
+1.head -25 f01 | tail +10
+2.head -10 f01 | tail +10
+3.find . type f -newermt "10 minutes"
+4.ls -lSr
+5.wc -l f01
+6.find f01 -type f -mtime +3
+
+-------------------------------------------------------------------------------------
+
+slide 61
+
+1.cat f01 | grep A
+2.cat f01 | grep ^the
+3.cat f01 | grep [.]
+4.cat f01 | grep[^.abc]
+5.grep "def\|deef\|deeeef" f01
+6.grep -v [0-9] f01
+7.grep -n "^$" f01
+8.ls -d*/
+--------------------------------------------------------------------------------------
+ slide 63
+1.ls
+2.ls | sort -r
+3.ls -li
+4.ls lr | sort -k 3
+5.ls -las >sorted file
+
+--------------------------------------------------------------------------------------
+slide 66
+1.echo ANIMAL | tr [:upper:] [:lower:] (animal)
+2.sed -i 's/^[0-9].*$//b' f01
+3.cat f01 | sed 's/ //g'
+4
+5.wc f01
+6.grep -o [aeiouAEIOU] f01 | wc -1
+
+--------------------------------------------------------------------------------------
+slide 94
+1.echo "Header" > newfile
+  cat file1 >>newfile
+2.sed '2d' f01,u to undo 
+7.3cc and type 1 
+8.3dd
+9.2u
+10.wq(save)"bc_v2"
+
+--------------------------------------------------------------------------------------
+slide 116
+
+1.sleep 100&
+     note PID
+  ps -l
+      note pid and ppid and logoff and the login
+  ps -l
+      now observe pid will be there and ppid will not be there
+2,3.nohup sleep 100&
+      note PID
+  ps -l
+      note pid and ppid and logoff and the login
+  ps -l
+      now observe pid will be there and ppid will not be there
+4.sleep 5s
+  echo "hello"
+7.Virtual memory is a selection of volatile memory created temporarily on the storage drive.
+8.caching is a process of storing date in a cache.
+
+--------------------------------------------------------------------------------------
+slide 118
+
+1.echo "happy birthday" | at now +1 day
+
+slide 120
+
+1.crontab (for scheduling job)
+	* * * * * >f01 (scheduled job which will create f01 file every minute)
+	crontab -l	(to check previous scheduled job)
+	at now +1 minute	(schedule job)
+	sleep 100&		(scheduled job)
+	at -l			(to see scheduled job)
+	at -r jobno(46)		(remove job)
+	crontab -r		(removed job)
